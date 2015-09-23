@@ -1,0 +1,28 @@
+﻿    <ul style="list-style-type:none;">
+        <li><a href="#addTask">Add New Task</a></li>
+    </ul>
+    <div class="row">
+        <div class="col-xs-7">   
+{{taskName}}        
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <td>
+                        Task Name
+                    </td>
+                    <td>
+                        Task Status (Complete / InComplete)
+                    </td>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>
+                        {{tasks.taskName}}
+                    </td>
+                    <td>
+                        {{tasks.taskStatus}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>

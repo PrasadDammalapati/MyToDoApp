@@ -1,0 +1,43 @@
+﻿<div class="col-xs-6">
+    <div class="row">
+        <div class="col-xs-7">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+                <input type="search" class="form-control" placeholder="Search" ng-model="todoSearch">
+            </div>
+        </div><br />
+        <div class="col-xs-7">
+            <ul class="nav nav-pills todo-filter">
+                <li ng-class="{'active' : show == 'All' }" ng-click="show='All'" class="btn btn-default">All</li>
+                <li ng-class="{'active' : show == 'Incomplete' }" ng-click="show='Incomplete'" class="btn btn-default">Incomplete</li>
+                <li ng-class="{'active' : show == 'Complete' }" ng-click="show='Complete'" class="btn btn-default">Complete</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row" id="todoAdd">
+        <div class="form-group">
+            <input class="todoField" id="newTodoField" type="text" ng-model="newTodo" placeholder="Add New Todo" ng-enter>
+            <button id="todoSubmit" class="btn btn-default" ng-click="addTodo()">Add</button>
+        </div>
+    </div>
+    <div class="row">
+        <ul class="list-unstyled" ng-repeat="todos in model track by $index" ui-sortable="todoSortable" ng-model="todos.list" ng-show="$index === currentShow">
+
+            <li class="todoTask" ng-repeat="todo in todos.list | filter:showFn | filter :todoSearch">
+
+                <input class="todoCheckbox" ng-model="todo.isDone" type="checkbox">
+
+                <label class="todoCheckboxlabel"></label>
+                <a href="#ShowDetails/:name" ng-click='tasksDetails(todo)'>
+                    <edit-in-place value="todo.taskName"></edit-in-place>
+                </a>
+                <button type="button" class="close pull-right" aria-hidden="true" ng-click="deleteTodo(todo)">&times;</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
